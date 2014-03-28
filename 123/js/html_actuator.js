@@ -53,22 +53,25 @@ HTMLActuator.prototype.clearContainer = function (container) {
 
 
 HTMLActuator.prototype.addTile = function (tile) {
-  var text=new Array(15);
+  var text=new Array(18);
   text[0] = " ";
-  text[1] = "音也";
-  text[2] = "トキヤ";
-  text[3] = "嶺二";
-  text[4] = "真斗";
-  text[5] = "レン";
-  text[6] = "蘭丸";
-  text[7] = "那月";
-  text[8] = "翔";
-  text[9] = "藍";
-  text[10] = "セシル";
-  text[11] = "カミュ";
-  text[12] = "春歌";
-  text[13] = " ";
-  text[14] = " ";
+  text[1] = "夏";
+  text[2] = "商";
+  text[3] = "周";
+  text[4] = "秦";
+  text[5] = "汉";
+  text[6] = "三国";
+  text[7] = "晋";
+  text[8] = "南北朝";
+  text[9] = "隋";
+  text[10] = "唐";
+  text[11] = "五代<br>十国";
+  text[12] = "宋";
+  text[13] = "元";
+  text[14] = "明";
+  text[15] = "清";
+  text[16] = " ";
+  text[17] = " ";
   var self = this;
   var text2 = function (n) { var r = 0; while (n > 1) r++, n >>= 1; return r; }
 
@@ -80,7 +83,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   // We can't use classlist because it somehow glitches when replacing classes
   var classes = ["tile", "tile-" + tile.value, positionClass];
 
-  if (tile.value > 2048) classes.push("tile-super");
+  if (tile.value > 131072) classes.push("tile-super");
 
   this.applyClasses(wrapper, classes);
 
@@ -111,53 +114,6 @@ HTMLActuator.prototype.addTile = function (tile) {
 
   // Put the tile on the board
   this.tileContainer.appendChild(wrapper);
-  // var text = " 還不知道這是什麼  應該是沒關係的註解(？";
-  // var self = this;
-  // var text2 = function (n) { var r = 0; while (n > 1) r++, n >>= 1; return r; }
-
-  // var wrapper   = document.createElement("div");
-  // var inner     = document.createElement("div");
-  // var position  = tile.previousPosition || { x: tile.x, y: tile.y };
-  // var positionClass = this.positionClass(position);
-
-  // // We can't use classlist because it somehow glitches when replacing classes
-  // var classes = ["tile", "tile-" + tile.value, positionClass];
-
-  // if (tile.value > 2048) classes.push("tile-super");
-
-  // this.applyClasses(wrapper, classes);
-
-  // inner.classList.add("tile-inner");
-  // inner.textContent = text[text2(tile.value)];
-
-  // if (tile.previousPosition) {
-  //   // Make sure that the tile gets rendered in the previous position first
-  //   window.requestAnimationFrame(function () {
-  //     classes[2] = self.positionClass({ x: tile.x, y: tile.y });
-  //     self.applyClasses(wrapper, classes); // Update the position
-  //   });
-  // } else if (tile.mergedFrom) {
-  //   classes.push("tile-merged");
-  //   this.applyClasses(wrapper, classes);
-
-  //   // Render the tiles that merged
-  //   tile.mergedFrom.forEach(function (merged) {
-  //     self.addTile(merged);
-  //   });
-  // } else {
-  //   classes.push("tile-new");
-  //   this.applyClasses(wrapper, classes);
-  // }
-
-  // // Add the inner part of the tile to the wrapper
-  // wrapper.appendChild(inner);
-
-  // // Put the tile on the board
-  // this.tileContainer.appendChild(wrapper);
-};
-
-HTMLActuator.prototype.applyClasses = function (element, classes) {
-  element.setAttribute("class", classes.join(" "));
 };
 
 HTMLActuator.prototype.normalizePosition = function (position) {
